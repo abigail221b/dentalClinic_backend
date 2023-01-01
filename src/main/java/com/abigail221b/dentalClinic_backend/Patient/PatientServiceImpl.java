@@ -28,8 +28,13 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public Patient update(Patient patient) {
+        return patientRepository.save(patient);
+    }
+
+    @Override
     public void delete(Integer id) {
         patientRepository.deleteById(id);
     }
-    
+
 }
