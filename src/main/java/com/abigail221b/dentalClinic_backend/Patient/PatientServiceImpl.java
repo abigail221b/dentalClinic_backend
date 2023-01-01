@@ -14,25 +14,22 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<Patient> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return patientRepository.findAll();
     }
 
     @Override
-    public Optional<Patient> findById(int id) {
-        // TODO Auto-generated method stub
-        return Optional.empty();
+    public Optional<Patient> findById(Integer id) {
+        return patientRepository.findById(id);
     }
 
     @Override
     public Patient save(Patient patient) {
-        // TODO Auto-generated method stub
-        return null;
+        return patientRepository.save(patient);
     }
 
     @Override
-    public void delete(int id) {
-        // TODO Auto-generated method stub
+    public void delete(Integer id) {
+        patientRepository.deleteById(id);
     }
     
 }
