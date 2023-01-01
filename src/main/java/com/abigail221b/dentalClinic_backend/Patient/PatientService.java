@@ -7,10 +7,10 @@ public interface PatientService {
     
     List<Patient> findAll();
 
-    Optional<Patient> findById(int id);
+    Optional<Patient> findById(Integer id);
 
     Patient save(Patient patient);
 
-    void delete(int id);
+    void delete(Integer id);
 
 }
