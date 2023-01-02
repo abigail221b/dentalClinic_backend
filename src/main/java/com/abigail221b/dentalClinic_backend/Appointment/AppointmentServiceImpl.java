@@ -14,32 +14,27 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<Appointment> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return appointmentRepository.findAll();
     }
 
     @Override
     public Optional<Appointment> findById(AppointmentId id) {
-        // TODO Auto-generated method stub
-        return Optional.empty();
+        return appointmentRepository.findById(id);
     }
 
     @Override
-    public Appointment save(Appointment Appointment) {
-        // TODO Auto-generated method stub
-        return null;
+    public Appointment save(Appointment appointment) {
+        return appointmentRepository.save(appointment);
     }
 
     @Override
-    public Appointment update(Appointment Appointment) {
-        // TODO Auto-generated method stub
-        return null;
+    public Appointment update(Appointment appointment) {
+        return appointmentRepository.save(appointment);
     }
 
     @Override
     public void delete(AppointmentId id) {
-        // TODO Auto-generated method stub
-        
+        appointmentRepository.deleteById(id);
     }
     
 }
