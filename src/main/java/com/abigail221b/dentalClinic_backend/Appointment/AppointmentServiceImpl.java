@@ -19,7 +19,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public Optional<Appointment> findById(Integer id) {
+    public Optional<Appointment> findById(AppointmentId id) {
         // TODO Auto-generated method stub
         return Optional.empty();
     }
@@ -37,7 +37,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(AppointmentId id) {
         // TODO Auto-generated method stub
         
     }
