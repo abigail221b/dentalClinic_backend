@@ -3,39 +3,38 @@ package com.abigail221b.dentalClinic_backend.Dentist;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DentistServiceImpl implements DentistService {
 
+    @Autowired
+    private DentistRepository dentistRepository;
+
     @Override
     public List<Dentist> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return dentistRepository.findAll();
     }
 
     @Override
     public Optional<Dentist> findById(Integer id) {
-        // TODO Auto-generated method stub
-        return Optional.empty();
+        return dentistRepository.findById(id);
     }
 
     @Override
     public Dentist save(Dentist dentist) {
-        // TODO Auto-generated method stub
-        return null;
+        return dentistRepository.save(dentist);
     }
 
     @Override
     public Dentist update(Dentist dentist) {
-        // TODO Auto-generated method stub
-        return null;
+        return dentistRepository.save(dentist);
     }
 
     @Override
     public void delete(Integer id) {
-        // TODO Auto-generated method stub
-        
+        dentistRepository.deleteById(id);
     }
 
 }
