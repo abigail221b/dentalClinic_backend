@@ -1,7 +1,7 @@
 package com.abigail221b.dentalClinic_backend.Appointment;
 
 import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalTime;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
@@ -16,6 +16,6 @@ public class AppointmentId {
     
     private int patientId;
     private Date date;
-    private Time startTime;
+    private LocalTime startTime;
 
 }
