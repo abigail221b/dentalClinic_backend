@@ -7,11 +7,11 @@ public interface AppointmentService {
     
     List<Appointment> findAll();
 
-    Optional<Appointment> findById(AppointmentId id);
+    Optional<Appointment> findById(AppointmentIdDTO id);
 
-    Appointment save(Appointment Appointment);
+    Appointment save(AppointmentDTO appointmentDTO);
 
-    Appointment update(Appointment Appointment);
+    Appointment update(AppointmentDTO appointmentDTO);
 
     void delete(AppointmentId id);
 
