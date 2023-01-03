@@ -3,7 +3,11 @@ package com.abigail221b.dentalClinic_backend.Appointment;
 import java.sql.Date;
 import java.time.LocalTime;
 
+import com.abigail221b.dentalClinic_backend.Patient.Patient;
+
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,8 +18,15 @@ import lombok.NoArgsConstructor;
 @Embeddable
 public class AppointmentId {
     
-    private int patientId;
+    @ManyToOne
+    @JoinColumn(
+        name = "appointment_patient",
+        referencedColumnName = "id"
+    )
+    private Patient patient;
+
     private Date date;
+    
     private LocalTime startTime;
 
 }
