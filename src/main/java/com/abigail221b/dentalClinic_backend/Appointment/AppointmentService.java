@@ -9,6 +9,8 @@ public interface AppointmentService {
 
     Optional<Appointment> findById(AppointmentIdDTO id);
 
+    List<Appointment> findByPatientId(Integer patientId);
+
     Appointment save(AppointmentDTO appointmentDTO);
 
     Appointment update(AppointmentDTO appointmentDTO);
