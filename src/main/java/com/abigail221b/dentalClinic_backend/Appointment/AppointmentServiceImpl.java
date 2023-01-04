@@ -1,5 +1,6 @@
 package com.abigail221b.dentalClinic_backend.Appointment;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,11 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    public List<Appointment> findByDateRange(Date after, Date before) {
+        return appointmentRepository.findById_DateBetween(after, before);
+    }
+
+    @Override
     public Appointment save(AppointmentDTO appointmentDTO) {
         AppointmentIdDTO id = appointmentDTO.getId();
         Patient patient = patientRepository.findById(id.getPatientId()).get();
@@ -70,5 +76,5 @@ public class AppointmentServiceImpl implements AppointmentService {
         Patient patient = patientRepository.findById(id.getPatientId()).get();
         appointmentRepository.deleteById(new AppointmentId(patient, id.getDate(), id.getStartTime()));
     }
-    
+
 }
