@@ -14,12 +14,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.abigail221b.dentalClinic_backend.Appointment.Appointment;
+import com.abigail221b.dentalClinic_backend.Appointment.AppointmentService;
+
 @RestController
 @RequestMapping("/dentists")
 public class DentistController {
     
     @Autowired
     private DentistService dentistService;
+
+    @Autowired
+    private AppointmentService appointmentService;
 
     @GetMapping
     public ResponseEntity<List<Dentist>> getAllDentists() {
@@ -29,6 +35,11 @@ public class DentistController {
     @GetMapping("/{id}")
     public ResponseEntity<Dentist> getDentistById(@PathVariable("id") Integer id) {
         return new ResponseEntity<Dentist>(dentistService.findById(id).get(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/appointments")
+    public ResponseEntity<List<Appointment>> getAppointmentsByDentistId(@PathVariable("id") Integer id) {
+        return new ResponseEntity<>(appointmentService.findByDentistId(id), HttpStatus.OK);
     }
 
     @PostMapping
