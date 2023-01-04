@@ -13,6 +13,6 @@ public interface AppointmentService {
 
     Appointment update(AppointmentDTO appointmentDTO);
 
-    void delete(AppointmentId id);
+    void delete(AppointmentIdDTO id);
 
 }
