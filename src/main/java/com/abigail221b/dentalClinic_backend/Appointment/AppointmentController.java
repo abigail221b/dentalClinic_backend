@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,6 +27,17 @@ public class AppointmentController {
     @GetMapping
     public ResponseEntity<List<Appointment>> getAllAppointments() {
         return new ResponseEntity<>(appointmentService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping(
+        params = {"before", "after"}
+    )
+    public ResponseEntity<List<Appointment>> getAppointmentsByDateRange(
+        @RequestParam("after") Date after,
+        @RequestParam("before") Date before
+        
+    ) {
+        return new ResponseEntity<>(appointmentService.findByDateRange(after, before), HttpStatus.OK);
     }
 
     @PostMapping
