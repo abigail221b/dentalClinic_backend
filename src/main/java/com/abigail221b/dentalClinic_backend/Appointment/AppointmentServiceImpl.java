@@ -35,6 +35,11 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    public List<Appointment> findByPatientId(Integer patientId) {
+        return appointmentRepository.findById_PatientId(patientId);
+    }
+
+    @Override
     public Appointment save(AppointmentDTO appointmentDTO) {
         AppointmentIdDTO id = appointmentDTO.getId();
         Patient patient = patientRepository.findById(id.getPatientId()).get();
