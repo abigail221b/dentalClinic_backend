@@ -55,8 +55,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<Patient> findByFirstNameAndLastNameAndDateOfBirthAndPhoneNumber(String firstName, String lastName,
-            Date dateOfBirth, String phoneNumber) {
+    public List<Patient> findBySearchParams(String firstName, String lastName, Date dateOfBirth, String phoneNumber) {
         return patientRepository.findByFirstNameAndLastNameAndDateOfBirthAndPhoneNumber(firstName, lastName, dateOfBirth, phoneNumber);
     }
 

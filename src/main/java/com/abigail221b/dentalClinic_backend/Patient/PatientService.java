@@ -22,7 +22,7 @@ public interface PatientService {
 
     List<Patient> findByFirstNameAndLastNameAndPhoneNumber(String firstName, String lastName, String phoneNumber);
 
-    List<Patient> findByFirstNameAndLastNameAndDateOfBirthAndPhoneNumber(String firstName, String lastName, Date dateOfBirth, String phoneNumber);
+    List<Patient> findBySearchParams(String firstName, String lastName, Date dateOfBirth, String phoneNumber);
 
     Patient save(Patient patient);
 

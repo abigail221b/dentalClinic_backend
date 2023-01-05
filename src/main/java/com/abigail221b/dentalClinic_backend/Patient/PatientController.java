@@ -50,7 +50,7 @@ public class PatientController {
         @RequestParam("dateOfBirth") Date dateOfBirth,
         @RequestParam("phoneNumber") String phoneNumber
     ) {
-        return new ResponseEntity<>(patientService.findByFirstNameAndLastNameAndDateOfBirthAndPhoneNumber(firstName, lastName, dateOfBirth, phoneNumber), HttpStatus.OK);
+        return new ResponseEntity<>(patientService.findBySearchParams(firstName, lastName, dateOfBirth, phoneNumber), HttpStatus.OK);
     }
 
     @GetMapping("/{id}/appointments")
