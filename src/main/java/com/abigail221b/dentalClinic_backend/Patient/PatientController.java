@@ -30,25 +30,19 @@ public class PatientController {
     @Autowired
     private AppointmentService appointmentService;
 
-    @GetMapping
-    public ResponseEntity<List<Patient>> getAllPatients() {
-        return new ResponseEntity<>(patientService.findAll(), HttpStatus.OK);
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<Patient> getPatientById(@PathVariable("id") Integer id) {
         return new ResponseEntity<>(patientService.findById(id).get(), HttpStatus.OK);
     }
 
     @RequestMapping(
-        method = RequestMethod.GET,
-        params = { "firstName", "lastName", "dateOfBirth", "phoneNumber" }
+        method = RequestMethod.GET
     )
     public ResponseEntity<List<Patient>> getPatients(
-        @RequestParam("firstName") String firstName,
-        @RequestParam("lastName") String lastName,
-        @RequestParam("dateOfBirth") Date dateOfBirth,
-        @RequestParam("phoneNumber") String phoneNumber
+        @RequestParam(name = "firstName", required = false) String firstName,
+        @RequestParam(name = "lastName", required = false) String lastName,
+        @RequestParam(name = "dateOfBirth", required = false) Date dateOfBirth,
+        @RequestParam(name = "phoneNumber", required = false) String phoneNumber
     ) {
         return new ResponseEntity<>(patientService.findBySearchParams(firstName, lastName, dateOfBirth, phoneNumber), HttpStatus.OK);
     }
