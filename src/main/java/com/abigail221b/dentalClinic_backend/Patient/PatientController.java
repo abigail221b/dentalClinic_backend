@@ -44,7 +44,7 @@ public class PatientController {
         method = RequestMethod.GET,
         params = { "firstName", "lastName", "dateOfBirth", "phoneNumber" }
     )
-    public ResponseEntity<List<Patient>> getPatientsByFirstNameAndLastNameAndDateOfBirth(
+    public ResponseEntity<List<Patient>> getPatients(
         @RequestParam("firstName") String firstName,
         @RequestParam("lastName") String lastName,
         @RequestParam("dateOfBirth") Date dateOfBirth,
