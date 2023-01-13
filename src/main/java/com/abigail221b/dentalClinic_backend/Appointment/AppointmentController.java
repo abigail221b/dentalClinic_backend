@@ -52,6 +52,15 @@ public class AppointmentController {
         return new ResponseEntity<>(appointmentService.findByDateRange(after, before), HttpStatus.OK);
     }
 
+    @GetMapping(params = {"before", "after", "dentistIds"})
+    public ResponseEntity<List<Appointment>> getAppointmentsByDateRangeAndDentistIds(
+        @RequestParam("after") LocalDate after,
+        @RequestParam("before") LocalDate before,
+        @RequestParam("dentistIds") List<Integer> dentistIds) {
+
+        return new ResponseEntity<>(appointmentService.findByDateRangeAndDentistIdIn(after, before, dentistIds), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<Appointment> saveAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         return new ResponseEntity<>(appointmentService.save(appointmentDTO), HttpStatus.OK);
