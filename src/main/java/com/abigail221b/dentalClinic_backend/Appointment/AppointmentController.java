@@ -31,6 +31,11 @@ public class AppointmentController {
         return new ResponseEntity<>(appointmentService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(params = {"date"})
+    public ResponseEntity<List<Appointment>> getAppointmentsByDate(@RequestParam("date") Date date) {
+        return new ResponseEntity<>(appointmentService.findByDate(date), HttpStatus.OK);
+    }
+
     @GetMapping(
         params = {"before", "after"}
     )
