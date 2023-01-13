@@ -1,6 +1,6 @@
 package com.abigail221b.dentalClinic_backend.Appointment;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -32,13 +32,13 @@ public class AppointmentController {
     }
 
     @GetMapping(params = {"date"})
-    public ResponseEntity<List<Appointment>> getAppointmentsByDate(@RequestParam("date") Date date) {
+    public ResponseEntity<List<Appointment>> getAppointmentsByDate(@RequestParam("date") LocalDate date) {
         return new ResponseEntity<>(appointmentService.findByDate(date), HttpStatus.OK);
     }
 
     @GetMapping(params = {"date", "dentistIds"})
     public ResponseEntity<List<Appointment>> getAppointmentsByDate(
-        @RequestParam("date") Date date,
+        @RequestParam("date") LocalDate date,
         @RequestParam("dentistIds") List<Integer> dentistIds
     ) {
         return new ResponseEntity<>(appointmentService.findByDateAndDentistIdIn(date, dentistIds), HttpStatus.OK);
@@ -48,8 +48,8 @@ public class AppointmentController {
         params = {"before", "after"}
     )
     public ResponseEntity<List<Appointment>> getAppointmentsByDateRange(
-        @RequestParam("after") Date after,
-        @RequestParam("before") Date before
+        @RequestParam("after") LocalDate after,
+        @RequestParam("before") LocalDate before
 
     ) {
         return new ResponseEntity<>(appointmentService.findByDateRange(after, before), HttpStatus.OK);
@@ -63,7 +63,7 @@ public class AppointmentController {
     @PutMapping("/{id}")
     public ResponseEntity<Appointment> updateAppointment(
             @MatrixVariable int patientId,
-            @MatrixVariable Date date,
+            @MatrixVariable LocalDate date,
             @MatrixVariable LocalTime startTime,
             @RequestBody AppointmentDTO appointmentDTO) {
 
@@ -74,7 +74,7 @@ public class AppointmentController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAppointment(
             @MatrixVariable int patientId,
-            @MatrixVariable Date date,
+            @MatrixVariable LocalDate date,
             @MatrixVariable LocalTime startTime) {
 
         appointmentService.delete(new AppointmentIdDTO(patientId, date, startTime));

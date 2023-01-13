@@ -1,6 +1,6 @@
 package com.abigail221b.dentalClinic_backend.Patient;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,7 +44,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<Patient> findByFirstNameAndLastNameAndDateOfBirth(String firstName, String lastName, Date dateOfBirth) {
+    public List<Patient> findByFirstNameAndLastNameAndDateOfBirth(String firstName, String lastName, LocalDate dateOfBirth) {
         return patientRepository.findByFirstNameAndLastNameAndDateOfBirth(firstName, lastName, dateOfBirth);
     }
 
@@ -55,7 +55,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<Patient> findBySearchParams(String firstName, String lastName, Date dateOfBirth, String phoneNumber) {
+    public List<Patient> findBySearchParams(String firstName, String lastName, LocalDate dateOfBirth, String phoneNumber) {
         return patientRepository.findBySearchParams(firstName, lastName, dateOfBirth, phoneNumber);
     }
 

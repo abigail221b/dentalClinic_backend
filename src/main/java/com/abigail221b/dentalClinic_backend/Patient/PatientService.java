@@ -1,11 +1,11 @@
 package com.abigail221b.dentalClinic_backend.Patient;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 public interface PatientService {
-    
+
     List<Patient> findAll();
 
     Optional<Patient> findById(Integer id);
@@ -18,11 +18,11 @@ public interface PatientService {
 
     List<Patient> findByFirstNameAndLastName(String firstName, String lastName);
 
-    List<Patient> findByFirstNameAndLastNameAndDateOfBirth(String firstName, String lastName, Date dateOfBirth);
+    List<Patient> findByFirstNameAndLastNameAndDateOfBirth(String firstName, String lastName, LocalDate dateOfBirth);
 
     List<Patient> findByFirstNameAndLastNameAndPhoneNumber(String firstName, String lastName, String phoneNumber);
 
-    List<Patient> findBySearchParams(String firstName, String lastName, Date dateOfBirth, String phoneNumber);
+    List<Patient> findBySearchParams(String firstName, String lastName, LocalDate dateOfBirth, String phoneNumber);
 
     Patient save(Patient patient);
 

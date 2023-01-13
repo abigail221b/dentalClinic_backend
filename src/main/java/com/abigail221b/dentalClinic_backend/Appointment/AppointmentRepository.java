@@ -1,6 +1,6 @@
 package com.abigail221b.dentalClinic_backend.Appointment;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,10 +11,10 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Appoin
 
     List<Appointment> findByDentist_Id(Integer id);
 
-    List<Appointment> findById_DateBetween(Date after, Date before);
+    List<Appointment> findById_DateBetween(LocalDate after, LocalDate before);
 
-    List<Appointment> findById_Date(Date date);
+    List<Appointment> findById_Date(LocalDate date);
 
-    List<Appointment> findById_DateAndDentistIdIn(Date date, List<Integer> dentistIds);
+    List<Appointment> findById_DateAndDentistIdIn(LocalDate date, List<Integer> dentistIds);
 
 }

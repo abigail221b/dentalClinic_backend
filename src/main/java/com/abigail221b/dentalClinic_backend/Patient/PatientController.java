@@ -1,6 +1,6 @@
 package com.abigail221b.dentalClinic_backend.Patient;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +43,7 @@ public class PatientController {
     public ResponseEntity<List<Patient>> getPatients(
         @RequestParam(name = "firstName", required = false) String firstName,
         @RequestParam(name = "lastName", required = false) String lastName,
-        @RequestParam(name = "dateOfBirth", required = false) Date dateOfBirth,
+        @RequestParam(name = "dateOfBirth", required = false) LocalDate dateOfBirth,
         @RequestParam(name = "phoneNumber", required = false) String phoneNumber
     ) {
         return new ResponseEntity<>(patientService.findBySearchParams(firstName, lastName, dateOfBirth, phoneNumber), HttpStatus.OK);

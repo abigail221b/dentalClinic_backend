@@ -1,6 +1,6 @@
 package com.abigail221b.dentalClinic_backend.Patient;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,14 +16,14 @@ import lombok.Data;
 @NoArgsConstructor
 @Entity
 public class Patient {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String firstName;
     private String lastName;
     private char sex;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String email;
     private String phoneNumber;
     private String address;

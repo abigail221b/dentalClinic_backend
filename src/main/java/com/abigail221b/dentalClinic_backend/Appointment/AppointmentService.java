@@ -1,6 +1,6 @@
 package com.abigail221b.dentalClinic_backend.Appointment;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,11 +14,11 @@ public interface AppointmentService {
 
     List<Appointment> findByDentistId(Integer dentistId);
 
-    List<Appointment> findByDate(Date date);
+    List<Appointment> findByDate(LocalDate date);
 
-    List<Appointment> findByDateAndDentistIdIn(Date date, List<Integer> dentistIds);
+    List<Appointment> findByDateAndDentistIdIn(LocalDate date, List<Integer> dentistIds);
 
-    List<Appointment> findByDateRange(Date after, Date before);
+    List<Appointment> findByDateRange(LocalDate after, LocalDate before);
 
     Appointment save(AppointmentDTO appointmentDTO);
 

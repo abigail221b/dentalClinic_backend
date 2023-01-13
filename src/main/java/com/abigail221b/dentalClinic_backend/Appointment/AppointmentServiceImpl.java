@@ -1,6 +1,6 @@
 package com.abigail221b.dentalClinic_backend.Appointment;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,17 +46,17 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> findByDate(Date date) {
+    public List<Appointment> findByDate(LocalDate date) {
         return appointmentRepository.findById_Date(date);
     }
 
     @Override
-    public List<Appointment> findByDateAndDentistIdIn(Date date, List<Integer> dentistIds) {
+    public List<Appointment> findByDateAndDentistIdIn(LocalDate date, List<Integer> dentistIds) {
         return appointmentRepository.findById_DateAndDentistIdIn(date, dentistIds);
     }
 
     @Override
-    public List<Appointment> findByDateRange(Date after, Date before) {
+    public List<Appointment> findByDateRange(LocalDate after, LocalDate before) {
         return appointmentRepository.findById_DateBetween(after, before);
     }
 

@@ -1,6 +1,6 @@
 package com.abigail221b.dentalClinic_backend.Appointment;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 import com.abigail221b.dentalClinic_backend.Patient.Patient;
@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Embeddable
 public class AppointmentId {
-    
+
     @ManyToOne
     @JoinColumn(
         name = "appointment_patient",
@@ -25,8 +25,8 @@ public class AppointmentId {
     )
     private Patient patient;
 
-    private Date date;
-    
+    private LocalDate date;
+
     private LocalTime startTime;
 
 }
