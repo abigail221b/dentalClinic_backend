@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("http://localhost:3000")
 @RequestMapping("/appointments")
 public class AppointmentController {
-    
+
     @Autowired
     private AppointmentService appointmentService;
 
@@ -36,13 +36,21 @@ public class AppointmentController {
         return new ResponseEntity<>(appointmentService.findByDate(date), HttpStatus.OK);
     }
 
+    @GetMapping(params = {"date", "dentistIds"})
+    public ResponseEntity<List<Appointment>> getAppointmentsByDate(
+        @RequestParam("date") Date date,
+        @RequestParam("dentistIds") List<Integer> dentistIds
+    ) {
+        return new ResponseEntity<>(appointmentService.findByDateAndDentistIdIn(date, dentistIds), HttpStatus.OK);
+    }
+
     @GetMapping(
         params = {"before", "after"}
     )
     public ResponseEntity<List<Appointment>> getAppointmentsByDateRange(
         @RequestParam("after") Date after,
         @RequestParam("before") Date before
-        
+
     ) {
         return new ResponseEntity<>(appointmentService.findByDateRange(after, before), HttpStatus.OK);
     }
@@ -54,18 +62,18 @@ public class AppointmentController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Appointment> updateAppointment(
-            @MatrixVariable int patientId, 
+            @MatrixVariable int patientId,
             @MatrixVariable Date date,
             @MatrixVariable LocalTime startTime,
             @RequestBody AppointmentDTO appointmentDTO) {
-                
+
         appointmentDTO.setId(new AppointmentIdDTO(patientId, date, startTime));
         return new ResponseEntity<>(appointmentService.update(appointmentDTO), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAppointment(
-            @MatrixVariable int patientId, 
+            @MatrixVariable int patientId,
             @MatrixVariable Date date,
             @MatrixVariable LocalTime startTime) {
 
