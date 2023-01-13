@@ -51,6 +51,11 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    public List<Appointment> findByDateAndDentistIdsIn(Date date, List<Integer> dentistIds) {
+        return appointmentRepository.findById_DateAndDentistIdsIn(date, dentistIds);
+    }
+
+    @Override
     public List<Appointment> findByDateRange(Date after, Date before) {
         return appointmentRepository.findById_DateBetween(after, before);
     }
