@@ -39,19 +39,16 @@ public class AppointmentController {
     @GetMapping(params = {"date", "dentistIds"})
     public ResponseEntity<List<Appointment>> getAppointmentsByDate(
         @RequestParam("date") LocalDate date,
-        @RequestParam("dentistIds") List<Integer> dentistIds
-    ) {
+        @RequestParam("dentistIds") List<Integer> dentistIds) {
+
         return new ResponseEntity<>(appointmentService.findByDateAndDentistIdIn(date, dentistIds), HttpStatus.OK);
     }
 
-    @GetMapping(
-        params = {"before", "after"}
-    )
+    @GetMapping(params = {"before", "after"})
     public ResponseEntity<List<Appointment>> getAppointmentsByDateRange(
         @RequestParam("after") LocalDate after,
-        @RequestParam("before") LocalDate before
+        @RequestParam("before") LocalDate before) {
 
-    ) {
         return new ResponseEntity<>(appointmentService.findByDateRange(after, before), HttpStatus.OK);
     }
 
