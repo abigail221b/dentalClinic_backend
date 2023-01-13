@@ -16,7 +16,7 @@ public interface AppointmentService {
 
     List<Appointment> findByDate(Date date);
 
-    List<Appointment> findByDateAndDentistIdsIn(Date date, List<Integer> dentistIds);
+    List<Appointment> findByDateAndDentistIdIn(Date date, List<Integer> dentistIds);
 
     List<Appointment> findByDateRange(Date after, Date before);
 

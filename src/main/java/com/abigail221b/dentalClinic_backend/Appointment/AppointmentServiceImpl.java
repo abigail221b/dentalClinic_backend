@@ -51,8 +51,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> findByDateAndDentistIdsIn(Date date, List<Integer> dentistIds) {
-        return appointmentRepository.findById_DateAndDentistIdsIn(date, dentistIds);
+    public List<Appointment> findByDateAndDentistIdIn(Date date, List<Integer> dentistIds) {
+        return appointmentRepository.findById_DateAndDentistIdIn(date, dentistIds);
     }
 
     @Override
