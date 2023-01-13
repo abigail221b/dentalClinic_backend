@@ -20,6 +20,8 @@ public interface AppointmentService {
 
     List<Appointment> findByDateRange(LocalDate after, LocalDate before);
 
+    List<Appointment> findByDateRangeAndDentistIdIn(LocalDate after, LocalDate before, List<Integer> dentistIds);
+
     Appointment save(AppointmentDTO appointmentDTO);
 
     Appointment update(AppointmentDTO appointmentDTO);
