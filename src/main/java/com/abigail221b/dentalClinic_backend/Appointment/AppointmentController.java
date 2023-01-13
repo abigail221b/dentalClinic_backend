@@ -37,7 +37,7 @@ public class AppointmentController {
     }
 
     @GetMapping(params = {"date", "dentistIds"})
-    public ResponseEntity<List<Appointment>> getAppointmentsByDate(
+    public ResponseEntity<List<Appointment>> getAppointmentsByDateAndDentistIds(
         @RequestParam("date") LocalDate date,
         @RequestParam("dentistIds") List<Integer> dentistIds) {
 
