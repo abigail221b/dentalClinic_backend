@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AppointmentService {
-    
+
     List<Appointment> findAll();
 
     Optional<Appointment> findById(AppointmentIdDTO id);
@@ -13,6 +13,8 @@ public interface AppointmentService {
     List<Appointment> findByPatientId(Integer patientId);
 
     List<Appointment> findByDentistId(Integer dentistId);
+
+    List<Appointment> findByDate(Date date);
 
     List<Appointment> findByDateRange(Date after, Date before);
 
