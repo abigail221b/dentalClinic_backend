@@ -13,4 +13,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Appoin
 
     List<Appointment> findById_DateBetween(Date after, Date before);
 
+    List<Appointment> findById_Date(Date date);
+
 }
