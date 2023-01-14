@@ -31,8 +31,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public Optional<Appointment> findById(Integer id) {
-        Patient patient = patientRepository.findById(id.getPatientId()).get();
-        return appointmentRepository.findById(new AppointmentId(patient, id.getDate(), id.getStartTime()));
+        return appointmentRepository.findById(id);
     }
 
     @Override
