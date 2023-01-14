@@ -7,16 +7,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Integer> {
 
-    List<Appointment> findById_PatientId(Integer id);
+    List<Appointment> findByPatient_Id(Integer id);
 
     List<Appointment> findByDentist_Id(Integer id);
 
-    List<Appointment> findById_DateBetween(LocalDate after, LocalDate before);
+    List<Appointment> findByDateBetween(LocalDate after, LocalDate before);
 
-    List<Appointment> findById_DateBetweenAndDentistIdIn(LocalDate after, LocalDate before, List<Integer> dentistIds);
+    List<Appointment> findByDateBetweenAndDentistIdIn(LocalDate after, LocalDate before, List<Integer> dentistIds);
 
-    List<Appointment> findById_Date(LocalDate date);
+    List<Appointment> findByDate(LocalDate date);
 
-    List<Appointment> findById_DateAndDentistIdIn(LocalDate date, List<Integer> dentistIds);
+    List<Appointment> findByDateAndDentistIdIn(LocalDate date, List<Integer> dentistIds);
 
 }

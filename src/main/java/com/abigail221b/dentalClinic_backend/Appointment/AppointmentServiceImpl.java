@@ -36,7 +36,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<Appointment> findByPatientId(Integer patientId) {
-        return appointmentRepository.findById_PatientId(patientId);
+        return appointmentRepository.findByPatient_Id(patientId);
     }
 
     @Override
@@ -46,22 +46,22 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<Appointment> findByDate(LocalDate date) {
-        return appointmentRepository.findById_Date(date);
+        return appointmentRepository.findByDate(date);
     }
 
     @Override
     public List<Appointment> findByDateAndDentistIdIn(LocalDate date, List<Integer> dentistIds) {
-        return appointmentRepository.findById_DateAndDentistIdIn(date, dentistIds);
+        return appointmentRepository.findByDateAndDentistIdIn(date, dentistIds);
     }
 
     @Override
     public List<Appointment> findByDateRange(LocalDate after, LocalDate before) {
-        return appointmentRepository.findById_DateBetween(after, before);
+        return appointmentRepository.findByDateBetween(after, before);
     }
 
     @Override
     public List<Appointment> findByDateRangeAndDentistIdIn(LocalDate after, LocalDate before, List<Integer> dentistIds) {
-        return appointmentRepository.findById_DateBetweenAndDentistIdIn(after, before, dentistIds);
+        return appointmentRepository.findByDateBetweenAndDentistIdIn(after, before, dentistIds);
     }
 
     @Override
