@@ -86,8 +86,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public void delete(Integer id) {
-        Patient patient = patientRepository.findById(id.getPatientId()).get();
-        appointmentRepository.deleteById(new AppointmentId(patient, id.getDate(), id.getStartTime()));
+        appointmentRepository.deleteById(id);
     }
 
 }
