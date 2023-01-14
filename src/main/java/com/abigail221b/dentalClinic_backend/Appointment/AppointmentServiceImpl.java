@@ -72,7 +72,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         Appointment appointment = new Appointment();
         appointment.setPatient(patient);
         appointment.setDate(appointmentDTO.getDate());
-        appointment.setStartTime(appointmentDTO.getTime());
+        appointment.setStartTime(appointmentDTO.getStartTime());
         appointment.setDentist(dentist);
         appointment.setDuration(appointmentDTO.getDuration());
 
@@ -88,7 +88,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setId(id);
         appointment.setPatient(patient);
         appointment.setDate(appointmentDTO.getDate());
-        appointment.setStartTime(appointmentDTO.getTime());
+        appointment.setStartTime(appointmentDTO.getStartTime());
         appointment.setDentist(dentist);
         appointment.setDuration(appointmentDTO.getDuration());
 
