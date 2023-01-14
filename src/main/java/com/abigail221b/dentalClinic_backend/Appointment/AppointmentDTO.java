@@ -14,7 +14,7 @@ public class AppointmentDTO {
 
     private int patientId;
     private LocalDate date;
-    private LocalTime time;
+    private LocalTime startTime;
     private int dentistId;
     private int duration;
 
