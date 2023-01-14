@@ -8,7 +8,7 @@ public interface AppointmentService {
 
     List<Appointment> findAll();
 
-    Optional<Appointment> findById(AppointmentIdDTO id);
+    Optional<Appointment> findById(Integer id);
 
     List<Appointment> findByPatientId(Integer patientId);
 
@@ -26,6 +26,6 @@ public interface AppointmentService {
 
     Appointment update(AppointmentDTO appointmentDTO);
 
-    void delete(AppointmentIdDTO id);
+    void delete(Integer id);
 
 }

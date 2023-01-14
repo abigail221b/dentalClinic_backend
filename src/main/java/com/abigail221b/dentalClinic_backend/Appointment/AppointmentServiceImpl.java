@@ -30,7 +30,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public Optional<Appointment> findById(AppointmentIdDTO id) {
+    public Optional<Appointment> findById(Integer id) {
         Patient patient = patientRepository.findById(id.getPatientId()).get();
         return appointmentRepository.findById(new AppointmentId(patient, id.getDate(), id.getStartTime()));
     }
@@ -92,7 +92,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void delete(AppointmentIdDTO id) {
+    public void delete(Integer id) {
         Patient patient = patientRepository.findById(id.getPatientId()).get();
         appointmentRepository.deleteById(new AppointmentId(patient, id.getDate(), id.getStartTime()));
     }
