@@ -77,12 +77,8 @@ public class AppointmentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAppointment(
-            @MatrixVariable int patientId,
-            @MatrixVariable LocalDate date,
-            @MatrixVariable LocalTime startTime) {
-
-        appointmentService.delete(new AppointmentIdDTO(patientId, date, startTime));
+    public ResponseEntity<Void> deleteAppointment(@PathVariable("id") Integer id) {
+        appointmentService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
