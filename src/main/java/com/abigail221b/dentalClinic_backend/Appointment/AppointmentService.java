@@ -24,7 +24,7 @@ public interface AppointmentService {
 
     Appointment save(AppointmentDTO appointmentDTO);
 
-    Appointment update(Appointment appointment);
+    Appointment update(Integer id, AppointmentDTO appointmentDTO);
 
     void delete(Integer id);
 

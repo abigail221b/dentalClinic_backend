@@ -80,7 +80,18 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public Appointment update(Appointment appointment) {
+    public Appointment update(Integer id, AppointmentDTO appointmentDTO) {
+        Patient patient = patientRepository.findById(appointmentDTO.getPatientId()).get();
+        Dentist dentist = dentistRepository.findById(appointmentDTO.getDentistId()).get();
+
+        Appointment appointment = new Appointment();
+        appointment.setId(id);
+        appointment.setPatient(patient);
+        appointment.setDate(appointmentDTO.getDate());
+        appointment.setStartTime(appointmentDTO.getTime());
+        appointment.setDentist(dentist);
+        appointment.setDuration(appointmentDTO.getDuration());
+
         return appointmentRepository.save(appointment);
     }
 
