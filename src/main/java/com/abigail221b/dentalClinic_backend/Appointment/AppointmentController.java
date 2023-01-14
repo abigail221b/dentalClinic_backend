@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.MatrixVariable;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -68,13 +69,11 @@ public class AppointmentController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Appointment> updateAppointment(
-            @MatrixVariable int patientId,
-            @MatrixVariable LocalDate date,
-            @MatrixVariable LocalTime startTime,
-            @RequestBody AppointmentDTO appointmentDTO) {
+        @PathVariable("id") Integer id,
+        @RequestBody Appointment appointment) {
 
-        appointmentDTO.setId(new AppointmentIdDTO(patientId, date, startTime));
-        return new ResponseEntity<>(appointmentService.update(appointmentDTO), HttpStatus.OK);
+        appointment.setId(id);
+        return new ResponseEntity<>(appointmentService.update(appointment), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
