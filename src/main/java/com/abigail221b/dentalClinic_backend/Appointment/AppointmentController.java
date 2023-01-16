@@ -26,17 +26,17 @@ public class AppointmentController {
     private AppointmentService appointmentService;
 
     @GetMapping
-    public ResponseEntity<List<Appointment>> getAllAppointments() {
+    public ResponseEntity<List<AppointmentDTO>> getAllAppointments() {
         return new ResponseEntity<>(appointmentService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping(params = {"date"})
-    public ResponseEntity<List<Appointment>> getAppointmentsByDate(@RequestParam("date") LocalDate date) {
+    public ResponseEntity<List<AppointmentDTO>> getAppointmentsByDate(@RequestParam("date") LocalDate date) {
         return new ResponseEntity<>(appointmentService.findByDate(date), HttpStatus.OK);
     }
 
     @GetMapping(params = {"date", "dentistIds"})
-    public ResponseEntity<List<Appointment>> getAppointmentsByDateAndDentistIds(
+    public ResponseEntity<List<AppointmentDTO>> getAppointmentsByDateAndDentistIds(
         @RequestParam("date") LocalDate date,
         @RequestParam("dentistIds") List<Integer> dentistIds) {
 
@@ -44,7 +44,7 @@ public class AppointmentController {
     }
 
     @GetMapping(params = {"before", "after"})
-    public ResponseEntity<List<Appointment>> getAppointmentsByDateRange(
+    public ResponseEntity<List<AppointmentDTO>> getAppointmentsByDateRange(
         @RequestParam("after") LocalDate after,
         @RequestParam("before") LocalDate before) {
 
@@ -52,7 +52,7 @@ public class AppointmentController {
     }
 
     @GetMapping(params = {"before", "after", "dentistIds"})
-    public ResponseEntity<List<Appointment>> getAppointmentsByDateRangeAndDentistIds(
+    public ResponseEntity<List<AppointmentDTO>> getAppointmentsByDateRangeAndDentistIds(
         @RequestParam("after") LocalDate after,
         @RequestParam("before") LocalDate before,
         @RequestParam("dentistIds") List<Integer> dentistIds) {
@@ -61,12 +61,12 @@ public class AppointmentController {
     }
 
     @PostMapping
-    public ResponseEntity<Appointment> saveAppointment(@RequestBody AppointmentDTO appointmentDTO) {
+    public ResponseEntity<AppointmentDTO> saveAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         return new ResponseEntity<>(appointmentService.save(appointmentDTO), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Appointment> updateAppointment(
+    public ResponseEntity<AppointmentDTO> updateAppointment(
         @PathVariable("id") Integer id,
         @RequestBody AppointmentDTO appointmentDTO) {
 

@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abigail221b.dentalClinic_backend.Appointment.Appointment;
+import com.abigail221b.dentalClinic_backend.Appointment.AppointmentDTO;
 import com.abigail221b.dentalClinic_backend.Appointment.AppointmentService;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
 @RequestMapping("/dentists")
 public class DentistController {
-    
+
     @Autowired
     private DentistService dentistService;
 
@@ -40,7 +40,7 @@ public class DentistController {
     }
 
     @GetMapping("/{id}/appointments")
-    public ResponseEntity<List<Appointment>> getAppointmentsByDentistId(@PathVariable("id") Integer id) {
+    public ResponseEntity<List<AppointmentDTO>> getAppointmentsByDentistId(@PathVariable("id") Integer id) {
         return new ResponseEntity<>(appointmentService.findByDentistId(id), HttpStatus.OK);
     }
 
