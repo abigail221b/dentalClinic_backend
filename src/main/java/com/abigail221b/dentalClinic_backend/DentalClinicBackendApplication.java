@@ -22,7 +22,8 @@ public class DentalClinicBackendApplication {
 		ModelMapper mapper = new ModelMapper();
 		mapper
 			.typeMap(Appointment.class, AppointmentDTO.class)
-			.addMappings(m -> m.map(src -> src.getPatient().getId(), AppointmentDTO::setPatientId));
+			.addMappings(m -> m.map(src -> src.getPatient(), AppointmentDTO::setPatient))
+			.addMappings(m -> m.map(src -> src.getDentist(), AppointmentDTO::setDentist));
 
 		return mapper;
 	}
