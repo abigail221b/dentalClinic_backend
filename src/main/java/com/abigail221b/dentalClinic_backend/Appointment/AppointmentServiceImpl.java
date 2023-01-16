@@ -91,8 +91,8 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public AppointmentDTO save(AppointmentDTO appointmentDTO) {
-        Patient patient = patientRepository.findById(appointmentDTO.getPatientId()).get();
-        Dentist dentist = dentistRepository.findById(appointmentDTO.getDentistId()).get();
+        Patient patient = patientRepository.findById(appointmentDTO.getPatient().getId()).get();
+        Dentist dentist = dentistRepository.findById(appointmentDTO.getDentist().getId()).get();
 
         Appointment appointment = new Appointment();
         appointment.setPatient(patient);
@@ -106,8 +106,8 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public AppointmentDTO update(Integer id, AppointmentDTO appointmentDTO) {
-        Patient patient = patientRepository.findById(appointmentDTO.getPatientId()).get();
-        Dentist dentist = dentistRepository.findById(appointmentDTO.getDentistId()).get();
+        Patient patient = patientRepository.findById(appointmentDTO.getPatient().getId()).get();
+        Dentist dentist = dentistRepository.findById(appointmentDTO.getDentist().getId()).get();
 
         Appointment appointment = new Appointment();
         appointment.setId(id);
