@@ -14,9 +14,13 @@ public class AppointmentDTO {
 
     private int id;
     private int patientId;
+    private String patientFirstName;
+    private String patientLastName;
     private LocalDate date;
     private LocalTime startTime;
     private int dentistId;
+    private String dentistFirstName;
+    private String dentistLastName;
     private int duration;
 
 }
