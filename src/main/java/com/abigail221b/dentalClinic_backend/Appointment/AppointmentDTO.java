@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AppointmentDTO {
 
+    private int id;
     private int patientId;
     private LocalDate date;
     private LocalTime startTime;
