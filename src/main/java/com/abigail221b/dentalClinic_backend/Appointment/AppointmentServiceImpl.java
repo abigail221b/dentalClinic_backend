@@ -39,7 +39,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public AppointmentDTO findById(Integer id) {
-        return appointmentRepository.findById(id);
+        return modelMapper.map(appointmentRepository.findById(id).get(), AppointmentDTO.class);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentRepository.findByDateBetweenAndDentistIdIn(after, before, dentistIds)
                     .stream()
                     .map(appointment -> modelMapper.map(appointment, AppointmentDTO.class))
-                    .collect(Collectors.toList());;
+                    .collect(Collectors.toList());
     }
 
     @Override
@@ -102,7 +102,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setDentist(dentist);
         appointment.setDuration(appointmentDTO.getDuration());
 
-        return appointmentRepository.save(appointment);
+        return modelMapper.map(appointmentRepository.save(appointment), AppointmentDTO.class);
     }
 
     @Override
@@ -118,7 +118,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setDentist(dentist);
         appointment.setDuration(appointmentDTO.getDuration());
 
-        return appointmentRepository.save(appointment);
+        return modelMapper.map(appointmentRepository.save(appointment), AppointmentDTO.class);
     }
 
     @Override
