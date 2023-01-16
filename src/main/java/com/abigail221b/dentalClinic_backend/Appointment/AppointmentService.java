@@ -2,7 +2,6 @@ package com.abigail221b.dentalClinic_backend.Appointment;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 public interface AppointmentService {
 
