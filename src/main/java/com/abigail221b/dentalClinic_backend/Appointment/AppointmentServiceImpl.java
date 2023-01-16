@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Autowired
     private DentistRepository dentistRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Override
     public List<Appointment> findAll() {
