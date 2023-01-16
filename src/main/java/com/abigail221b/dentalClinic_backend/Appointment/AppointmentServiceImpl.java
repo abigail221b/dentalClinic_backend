@@ -29,47 +29,47 @@ public class AppointmentServiceImpl implements AppointmentService {
     private ModelMapper modelMapper;
 
     @Override
-    public List<Appointment> findAll() {
+    public List<AppointmentDTO> findAll() {
         return appointmentRepository.findAll();
     }
 
     @Override
-    public Optional<Appointment> findById(Integer id) {
+    public AppointmentDTO findById(Integer id) {
         return appointmentRepository.findById(id);
     }
 
     @Override
-    public List<Appointment> findByPatientId(Integer patientId) {
+    public List<AppointmentDTO> findByPatientId(Integer patientId) {
         return appointmentRepository.findByPatient_Id(patientId);
     }
 
     @Override
-    public List<Appointment> findByDentistId(Integer dentistId) {
+    public List<AppointmentDTO> findByDentistId(Integer dentistId) {
         return appointmentRepository.findByDentist_Id(dentistId);
     }
 
     @Override
-    public List<Appointment> findByDate(LocalDate date) {
+    public List<AppointmentDTO> findByDate(LocalDate date) {
         return appointmentRepository.findByDate(date);
     }
 
     @Override
-    public List<Appointment> findByDateAndDentistIdIn(LocalDate date, List<Integer> dentistIds) {
+    public List<AppointmentDTO> findByDateAndDentistIdIn(LocalDate date, List<Integer> dentistIds) {
         return appointmentRepository.findByDateAndDentistIdIn(date, dentistIds);
     }
 
     @Override
-    public List<Appointment> findByDateRange(LocalDate after, LocalDate before) {
+    public List<AppointmentDTO> findByDateRange(LocalDate after, LocalDate before) {
         return appointmentRepository.findByDateBetween(after, before);
     }
 
     @Override
-    public List<Appointment> findByDateRangeAndDentistIdIn(LocalDate after, LocalDate before, List<Integer> dentistIds) {
+    public List<AppointmentDTO> findByDateRangeAndDentistIdIn(LocalDate after, LocalDate before, List<Integer> dentistIds) {
         return appointmentRepository.findByDateBetweenAndDentistIdIn(after, before, dentistIds);
     }
 
     @Override
-    public Appointment save(AppointmentDTO appointmentDTO) {
+    public AppointmentDTO save(AppointmentDTO appointmentDTO) {
         Patient patient = patientRepository.findById(appointmentDTO.getPatientId()).get();
         Dentist dentist = dentistRepository.findById(appointmentDTO.getDentistId()).get();
 
@@ -84,7 +84,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public Appointment update(Integer id, AppointmentDTO appointmentDTO) {
+    public AppointmentDTO update(Integer id, AppointmentDTO appointmentDTO) {
         Patient patient = patientRepository.findById(appointmentDTO.getPatientId()).get();
         Dentist dentist = dentistRepository.findById(appointmentDTO.getDentistId()).get();
 

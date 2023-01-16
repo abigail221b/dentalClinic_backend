@@ -6,25 +6,25 @@ import java.util.Optional;
 
 public interface AppointmentService {
 
-    List<Appointment> findAll();
+    List<AppointmentDTO> findAll();
 
-    Optional<Appointment> findById(Integer id);
+    AppointmentDTO findById(Integer id);
 
-    List<Appointment> findByPatientId(Integer patientId);
+    List<AppointmentDTO> findByPatientId(Integer patientId);
 
-    List<Appointment> findByDentistId(Integer dentistId);
+    List<AppointmentDTO> findByDentistId(Integer dentistId);
 
-    List<Appointment> findByDate(LocalDate date);
+    List<AppointmentDTO> findByDate(LocalDate date);
 
-    List<Appointment> findByDateAndDentistIdIn(LocalDate date, List<Integer> dentistIds);
+    List<AppointmentDTO> findByDateAndDentistIdIn(LocalDate date, List<Integer> dentistIds);
 
-    List<Appointment> findByDateRange(LocalDate after, LocalDate before);
+    List<AppointmentDTO> findByDateRange(LocalDate after, LocalDate before);
 
-    List<Appointment> findByDateRangeAndDentistIdIn(LocalDate after, LocalDate before, List<Integer> dentistIds);
+    List<AppointmentDTO> findByDateRangeAndDentistIdIn(LocalDate after, LocalDate before, List<Integer> dentistIds);
 
-    Appointment save(AppointmentDTO appointmentDTO);
+    AppointmentDTO save(AppointmentDTO appointmentDTO);
 
-    Appointment update(Integer id, AppointmentDTO appointmentDTO);
+    AppointmentDTO update(Integer id, AppointmentDTO appointmentDTO);
 
     void delete(Integer id);
 
