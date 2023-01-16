@@ -3,6 +3,7 @@ package com.abigail221b.dentalClinic_backend.Appointment;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,10 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<AppointmentDTO> findAll() {
-        return appointmentRepository.findAll();
+        return appointmentRepository.findAll()
+                    .stream()
+                    .map(appointment -> modelMapper.map(appointment, AppointmentDTO.class))
+                    .collect(Collectors.toList());
     }
 
     @Override
@@ -40,32 +44,50 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<AppointmentDTO> findByPatientId(Integer patientId) {
-        return appointmentRepository.findByPatient_Id(patientId);
+        return appointmentRepository.findByPatient_Id(patientId)
+                    .stream()
+                    .map(appointment -> modelMapper.map(appointment, AppointmentDTO.class))
+                    .collect(Collectors.toList());
     }
 
     @Override
     public List<AppointmentDTO> findByDentistId(Integer dentistId) {
-        return appointmentRepository.findByDentist_Id(dentistId);
+        return appointmentRepository.findByDentist_Id(dentistId)
+                    .stream()
+                    .map(appointment -> modelMapper.map(appointment, AppointmentDTO.class))
+                    .collect(Collectors.toList());
     }
 
     @Override
     public List<AppointmentDTO> findByDate(LocalDate date) {
-        return appointmentRepository.findByDate(date);
+        return appointmentRepository.findByDate(date)
+                    .stream()
+                    .map(appointment -> modelMapper.map(appointment, AppointmentDTO.class))
+                    .collect(Collectors.toList());
     }
 
     @Override
     public List<AppointmentDTO> findByDateAndDentistIdIn(LocalDate date, List<Integer> dentistIds) {
-        return appointmentRepository.findByDateAndDentistIdIn(date, dentistIds);
+        return appointmentRepository.findByDateAndDentistIdIn(date, dentistIds)
+                    .stream()
+                    .map(appointment -> modelMapper.map(appointment, AppointmentDTO.class))
+                    .collect(Collectors.toList());
     }
 
     @Override
     public List<AppointmentDTO> findByDateRange(LocalDate after, LocalDate before) {
-        return appointmentRepository.findByDateBetween(after, before);
+        return appointmentRepository.findByDateBetween(after, before)
+                    .stream()
+                    .map(appointment -> modelMapper.map(appointment, AppointmentDTO.class))
+                    .collect(Collectors.toList());
     }
 
     @Override
     public List<AppointmentDTO> findByDateRangeAndDentistIdIn(LocalDate after, LocalDate before, List<Integer> dentistIds) {
-        return appointmentRepository.findByDateBetweenAndDentistIdIn(after, before, dentistIds);
+        return appointmentRepository.findByDateBetweenAndDentistIdIn(after, before, dentistIds)
+                    .stream()
+                    .map(appointment -> modelMapper.map(appointment, AppointmentDTO.class))
+                    .collect(Collectors.toList());;
     }
 
     @Override
