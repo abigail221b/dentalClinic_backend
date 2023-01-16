@@ -13,14 +13,10 @@ import lombok.NoArgsConstructor;
 public class AppointmentDTO {
 
     private int id;
-    private int patientId;
-    private String patientFirstName;
-    private String patientLastName;
+    private AppointmentPatientDTO patient;
     private LocalDate date;
     private LocalTime startTime;
-    private int dentistId;
-    private String dentistFirstName;
-    private String dentistLastName;
+    private AppointmentDentistDTO dentist;
     private int duration;
 
 }
