@@ -12,10 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AppointmentDTO {
 
-    private int patientId;
+    private int id;
+    private AppointmentPatientDTO patient;
     private LocalDate date;
     private LocalTime startTime;
-    private int dentistId;
+    private AppointmentDentistDTO dentist;
     private int duration;
 
 }

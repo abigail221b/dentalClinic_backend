@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abigail221b.dentalClinic_backend.Appointment.Appointment;
+import com.abigail221b.dentalClinic_backend.Appointment.AppointmentDTO;
 import com.abigail221b.dentalClinic_backend.Appointment.AppointmentService;
 
 @RestController
@@ -50,7 +50,7 @@ public class PatientController {
     }
 
     @GetMapping("/{id}/appointments")
-    public ResponseEntity<List<Appointment>> getAppointmentsByPatientId(@PathVariable("id") Integer patientId) {
+    public ResponseEntity<List<AppointmentDTO>> getAppointmentsByPatientId(@PathVariable("id") Integer patientId) {
         return new ResponseEntity<>(appointmentService.findByPatientId(patientId), HttpStatus.OK);
     }
 
