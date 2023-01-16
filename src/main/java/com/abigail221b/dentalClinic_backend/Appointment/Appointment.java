@@ -1,9 +1,15 @@
 package com.abigail221b.dentalClinic_backend.Appointment;
 
-import com.abigail221b.dentalClinic_backend.Dentist.Dentist;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-import jakarta.persistence.EmbeddedId;
+import com.abigail221b.dentalClinic_backend.Dentist.Dentist;
+import com.abigail221b.dentalClinic_backend.Patient.Patient;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -15,9 +21,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Appointment {
-    
-    @EmbeddedId
-    private AppointmentId id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(
+        name = "appointment_patient",
+        referencedColumnName = "id"
+    )
+    private Patient patient;
+
+    private LocalDate date;
+
+    private LocalTime startTime;
 
     @ManyToOne
     @JoinColumn(

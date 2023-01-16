@@ -30,14 +30,13 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public Optional<Appointment> findById(AppointmentIdDTO id) {
-        Patient patient = patientRepository.findById(id.getPatientId()).get();
-        return appointmentRepository.findById(new AppointmentId(patient, id.getDate(), id.getStartTime()));
+    public Optional<Appointment> findById(Integer id) {
+        return appointmentRepository.findById(id);
     }
 
     @Override
     public List<Appointment> findByPatientId(Integer patientId) {
-        return appointmentRepository.findById_PatientId(patientId);
+        return appointmentRepository.findByPatient_Id(patientId);
     }
 
     @Override
@@ -47,54 +46,58 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<Appointment> findByDate(LocalDate date) {
-        return appointmentRepository.findById_Date(date);
+        return appointmentRepository.findByDate(date);
     }
 
     @Override
     public List<Appointment> findByDateAndDentistIdIn(LocalDate date, List<Integer> dentistIds) {
-        return appointmentRepository.findById_DateAndDentistIdIn(date, dentistIds);
+        return appointmentRepository.findByDateAndDentistIdIn(date, dentistIds);
     }
 
     @Override
     public List<Appointment> findByDateRange(LocalDate after, LocalDate before) {
-        return appointmentRepository.findById_DateBetween(after, before);
+        return appointmentRepository.findByDateBetween(after, before);
     }
 
     @Override
     public List<Appointment> findByDateRangeAndDentistIdIn(LocalDate after, LocalDate before, List<Integer> dentistIds) {
-        return appointmentRepository.findById_DateBetweenAndDentistIdIn(after, before, dentistIds);
+        return appointmentRepository.findByDateBetweenAndDentistIdIn(after, before, dentistIds);
     }
 
     @Override
     public Appointment save(AppointmentDTO appointmentDTO) {
-        AppointmentIdDTO id = appointmentDTO.getId();
-        Patient patient = patientRepository.findById(id.getPatientId()).get();
+        Patient patient = patientRepository.findById(appointmentDTO.getPatientId()).get();
         Dentist dentist = dentistRepository.findById(appointmentDTO.getDentistId()).get();
-        return appointmentRepository.save(
-            new Appointment(
-                new AppointmentId(patient, id.getDate(), id.getStartTime()),
-                dentist,
-                appointmentDTO.getDuration()
-            ));
+
+        Appointment appointment = new Appointment();
+        appointment.setPatient(patient);
+        appointment.setDate(appointmentDTO.getDate());
+        appointment.setStartTime(appointmentDTO.getStartTime());
+        appointment.setDentist(dentist);
+        appointment.setDuration(appointmentDTO.getDuration());
+
+        return appointmentRepository.save(appointment);
     }
 
     @Override
-    public Appointment update(AppointmentDTO appointmentDTO) {
-        AppointmentIdDTO id = appointmentDTO.getId();
-        Patient patient = patientRepository.findById(id.getPatientId()).get();
+    public Appointment update(Integer id, AppointmentDTO appointmentDTO) {
+        Patient patient = patientRepository.findById(appointmentDTO.getPatientId()).get();
         Dentist dentist = dentistRepository.findById(appointmentDTO.getDentistId()).get();
-        return appointmentRepository.save(
-            new Appointment(
-                new AppointmentId(patient, id.getDate(), id.getStartTime()),
-                dentist,
-                appointmentDTO.getDuration()
-            ));
+
+        Appointment appointment = new Appointment();
+        appointment.setId(id);
+        appointment.setPatient(patient);
+        appointment.setDate(appointmentDTO.getDate());
+        appointment.setStartTime(appointmentDTO.getStartTime());
+        appointment.setDentist(dentist);
+        appointment.setDuration(appointmentDTO.getDuration());
+
+        return appointmentRepository.save(appointment);
     }
 
     @Override
-    public void delete(AppointmentIdDTO id) {
-        Patient patient = patientRepository.findById(id.getPatientId()).get();
-        appointmentRepository.deleteById(new AppointmentId(patient, id.getDate(), id.getStartTime()));
+    public void delete(Integer id) {
+        appointmentRepository.deleteById(id);
     }
 
 }

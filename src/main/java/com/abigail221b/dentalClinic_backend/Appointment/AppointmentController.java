@@ -1,7 +1,6 @@
 package com.abigail221b.dentalClinic_backend.Appointment;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.MatrixVariable;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -68,22 +67,15 @@ public class AppointmentController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Appointment> updateAppointment(
-            @MatrixVariable int patientId,
-            @MatrixVariable LocalDate date,
-            @MatrixVariable LocalTime startTime,
-            @RequestBody AppointmentDTO appointmentDTO) {
+        @PathVariable("id") Integer id,
+        @RequestBody AppointmentDTO appointmentDTO) {
 
-        appointmentDTO.setId(new AppointmentIdDTO(patientId, date, startTime));
-        return new ResponseEntity<>(appointmentService.update(appointmentDTO), HttpStatus.OK);
+        return new ResponseEntity<>(appointmentService.update(id, appointmentDTO), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAppointment(
-            @MatrixVariable int patientId,
-            @MatrixVariable LocalDate date,
-            @MatrixVariable LocalTime startTime) {
-
-        appointmentService.delete(new AppointmentIdDTO(patientId, date, startTime));
+    public ResponseEntity<Void> deleteAppointment(@PathVariable("id") Integer id) {
+        appointmentService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

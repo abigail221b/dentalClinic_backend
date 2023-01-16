@@ -1,5 +1,8 @@
 package com.abigail221b.dentalClinic_backend.Appointment;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AppointmentDTO {
-    
-    private AppointmentIdDTO id;
+
+    private int patientId;
+    private LocalDate date;
+    private LocalTime startTime;
     private int dentistId;
     private int duration;
 
