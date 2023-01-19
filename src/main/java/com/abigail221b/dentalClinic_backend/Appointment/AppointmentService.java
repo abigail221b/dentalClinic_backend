@@ -21,6 +21,8 @@ public interface AppointmentService {
 
     List<AppointmentDTO> findByDateRangeAndDentistIdIn(LocalDate after, LocalDate before, List<Integer> dentistIds);
 
+    List<AppointmentDTO> findByDateAfterAndPatientId(LocalDate after, Integer patientId);
+
     AppointmentDTO save(AppointmentDTO appointmentDTO);
 
     AppointmentDTO update(Integer id, AppointmentDTO appointmentDTO);

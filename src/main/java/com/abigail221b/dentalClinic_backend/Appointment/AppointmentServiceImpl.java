@@ -90,6 +90,14 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    public List<AppointmentDTO> findByDateAfterAndPatientId(LocalDate after, Integer patientId) {
+        return appointmentRepository.findByDateOrDateAfterAndPatientId(after, after, patientId)
+                    .stream()
+                    .map(appointment -> modelMapper.map(appointment, AppointmentDTO.class))
+                    .collect(Collectors.toList());
+    }
+
+    @Override
     public AppointmentDTO save(AppointmentDTO appointmentDTO) {
         Patient patient = patientRepository.findById(appointmentDTO.getPatient().getId()).get();
         Dentist dentist = dentistRepository.findById(appointmentDTO.getDentist().getId()).get();
