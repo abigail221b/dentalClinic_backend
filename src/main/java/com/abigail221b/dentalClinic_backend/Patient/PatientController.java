@@ -49,9 +49,14 @@ public class PatientController {
         return new ResponseEntity<>(patientService.findBySearchParams(firstName, lastName, dateOfBirth, phoneNumber), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}/appointments")
-    public ResponseEntity<List<AppointmentDTO>> getAppointmentsByPatientId(@PathVariable("id") Integer patientId) {
-        return new ResponseEntity<>(appointmentService.findByPatientId(patientId), HttpStatus.OK);
+    @GetMapping(
+        path = "/{id}/appointments",
+        params = "after")
+    public ResponseEntity<List<AppointmentDTO>> getAppointmentsByPatientId(
+        @PathVariable("id") Integer patientId,
+        @RequestParam("after") LocalDate date) {
+
+        return new ResponseEntity<>(appointmentService.findByDateAfterAndPatientId(date, patientId), HttpStatus.OK);
     }
 
     @PostMapping
