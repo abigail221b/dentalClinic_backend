@@ -19,4 +19,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Intege
 
     List<Appointment> findByDateAndDentistIdIn(LocalDate date, List<Integer> dentistIds);
 
+    List<Appointment> findByDateOrDateAfterAndPatientId(LocalDate onDate, LocalDate afterDate, Integer patientId);
+
 }
