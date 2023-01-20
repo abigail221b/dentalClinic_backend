@@ -19,7 +19,7 @@ import com.abigail221b.dentalClinic_backend.Appointment.AppointmentDTO;
 import com.abigail221b.dentalClinic_backend.Appointment.AppointmentService;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = { "${react-app-url}" })
 @RequestMapping("/dentists")
 public class DentistController {
 
